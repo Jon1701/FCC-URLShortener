@@ -17,8 +17,8 @@ var MONGO = {
   database: 'ms-urlshortener',
   collection: 'urls',
   credentials: {
-    username: 'app-ms-urlshortener',
-    password: process.env['app-ms-urlshortener']
+    username: 'app_ms_urlshortener',
+    password: process.env['app_ms_urlshortener']
   }
 };
 
@@ -250,6 +250,8 @@ app.get('/*', function(req, res) {
     if (path == 'hostname') {
       res.redirect('/hostname');
     } else {
+
+      res.redirect('/new/*')
       // Invalid short URL, return error message.
       res.json(generateError('Invalid Short URL.'));
     };
