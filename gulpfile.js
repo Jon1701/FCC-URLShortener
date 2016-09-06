@@ -3,7 +3,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
-var webpack = require('webpack-stream');
 
 // Paths.
 var srcPath = './src/';
@@ -23,32 +22,20 @@ gulp.task('scss', function() {
       .pipe(gulp.dest(destPath + 'css/'));
 });
 
-// Process JSX.
-gulp.task('jsx', function() {
-  gulp.src(srcPath + 'js/index.jsx')
-    .pipe(webpack({
-      watch: true,
-      module: {
-        loaders: [
-          {
-            test: /\.jsx$/,
-            loader: 'babel',
-            query: {
-              presets: ['es2015', 'react']
-            }
-          }
-        ]
-      },
-      output: {
-        filename: 'app.js'
-      }
-    }))
-    .pipe(gulp.dest(destPath + 'js/'));
+// Move Materialize framework.
+gulp.task('materialize', function() {
+  gulp.src(modulesPath + 'materialize-css/dist/**/*')
+    .pipe(gulp.dest(destPath + 'frameworks/materialize-css/'));
+});
+
+// Move jquery.
+gulp.task('jquery', function() {
+  gulp.src(modulesPath + 'jquery/dist/jquery.js')
+    .pipe(gulp.dest(destPath + 'frameworks/jquery/'));
 });
 
 // Watch Task.
 gulp.task("watch", function() {
-  gulp.watch(srcPath + 'js/**/*.jsx', ['jsx']); // JSX files.
   gulp.watch(srcPath + "css/**/*.scss", ["scss"]); // SASS Main.
   gulp.watch(srcPath + "css/**/_*.scss", ["scss"]); // SASS Partials.
   gulp.watch(srcPath + "*.html", ["html"]); // HTML files.
@@ -61,4 +48,4 @@ gulp.task('server', function() {
   });
 });
 
-gulp.task('default', ['server', 'watch', 'html', 'scss', 'jsx']);
+gulp.task('default', ['server', 'watch', 'html', 'materialize', 'jquery', 'scss']);
