@@ -1,6 +1,5 @@
 // React dependencies.
 import React from 'react';
-
 import classNames from 'classnames';
 
 // Component definition.
@@ -22,6 +21,7 @@ export default class Tab extends React.Component {
     // Classes used for this component.
     var myClasses = classNames({
       'tab': true,
+      'noselect': true,
       'tab-active': this.props.activeTab == this.props.tabId
     });
 
