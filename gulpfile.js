@@ -15,6 +15,12 @@ gulp.task('html', function() {
       .pipe(gulp.dest(destPath));
 });
 
+// Move JavaScript files.
+gulp.task('javascript', function() {
+  gulp.src(srcPath + 'js/*.js')
+    .pipe(gulp.dest(destPath + 'js/'));
+});
+
 // Compile SASS and move CSS.
 gulp.task('scss', function() {
   gulp.src(srcPath + 'css/**/*.scss')
@@ -36,6 +42,7 @@ gulp.task('jquery', function() {
 
 // Watch Task.
 gulp.task("watch", function() {
+  gulp.watch(srcPath + "js/**/*.js", ["javascript"]); // JavaScript.
   gulp.watch(srcPath + "css/**/*.scss", ["scss"]); // SASS Main.
   gulp.watch(srcPath + "css/**/_*.scss", ["scss"]); // SASS Partials.
   gulp.watch(srcPath + "*.html", ["html"]); // HTML files.
@@ -48,4 +55,4 @@ gulp.task('server', function() {
   });
 });
 
-gulp.task('default', ['server', 'watch', 'html', 'materialize', 'jquery', 'scss']);
+gulp.task('default', ['server', 'watch', 'html', 'javascript', 'materialize', 'jquery', 'scss']);
