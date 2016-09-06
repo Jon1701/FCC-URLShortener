@@ -16,6 +16,9 @@
     <!-- Application Stylesheet -->
     <link rel="stylesheet" href="css/styles.css"/>
 
+    <!-- Application scripts -->
+    <script type="text/javascript" src="js/script.js"></script>
+
   </head>
 
   <body>
@@ -45,23 +48,32 @@
 
         <div id="usage-web" class="col s12">
 
-          <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input placeholder="https://www.google.com" id="input-url" type="text" class="validate">
-              <label for="input-url">Enter a URL to shorten:</label>
+          <form class="col s12" id="form">
+
+            <!-- Input for URL  -->
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="https://www.google.com" id="input-url" type="text">
+                <label for="input-url">Enter a URL to shorten:</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col s6">
-              <a id="btn-submit" class="waves-effect waves-light btn-large">Shorten Link</a>
+
+            <!-- Container for Submit/Reset buttons -->
+            <div class="row">
+
+              <!-- Submit button -->
+              <div class="col s6">
+                <button id="btn-submit" type="submit" class="waves-effect waves-light btn-large">Shorten Link</button>
+              </div>
+
+              <!-- Reset Button -->
+              <div class="col s6">
+                <button id="btn-reset" type="reset" class="waves-effect waves-light btn-large">Reset</button>
+              </div>
             </div>
-            <div class="col s6">
-              <a id="btn-reset" class="waves-effect waves-light btn-large">Reset</a>
-            </div>
-          </div>
+
+          </form>
         </div>
-        </form>
 
         <div id="usage-api" class="col s12">Test 2</div>
       </div>

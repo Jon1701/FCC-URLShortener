@@ -1,15 +1,3 @@
-.text-center {
-  text-align: center;
-}
-
-.clearfix {
-  clear: both;
-}
-
-.hidden {
-  display: none;
-}
-
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -20,23 +8,18 @@
                                   not supported by any browser */
 }
 
-.container-content {
-  border: solid 10px #EF626C;
-  padding: 20px;
-
-  font-size: 1.5em;
+.text-center {
+  text-align: center;
 }
 
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-
-  font-family: sans-serif;
-  background-color: #FFFFFF;
+  font-size: 100%;
 }
 
-// Import.
-@import '_Description';
-@import '_ContainerTabs';
-@import '_COntentWeb';
+#usage-web {
+  padding: 50px 0 50px 0;
+
+  .btn-large {
+    width: 100%;
+  }
+}
