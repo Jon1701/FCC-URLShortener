@@ -1,0 +1,43 @@
+{
+  "name": "ms-urlshortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "bin": {
+    "gulp": "./bin/gulp",
+    "nodemon": "./bin/nodemon"
+  },
+  "scripts": {
+    "dev": "gulp",
+    "server": "nodemon ./server.js"
+  },
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "classnames": "^2.2.5",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-sass": "^2.3.2",
+    "jquery": "^3.1.0",
+    "mongodb": "^2.2.9",
+    "randomstring": "^1.1.5",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "valid-url": "^1.0.9",
+    "webpack-stream": "^3.2.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jon1701/MS-URLShortener.git"
+  },
+  "author": "Jon1701",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jon1701/MS-URLShortener/issues"
+  },
+  "homepage": "https://github.com/Jon1701/MS-URLShortener#readme"
+}
