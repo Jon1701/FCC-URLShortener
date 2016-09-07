@@ -8,8 +8,16 @@
                                   not supported by any browser */
 }
 
+.hidden {
+  display: none;
+}
+
 .text-center {
   text-align: center;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 body {
@@ -21,5 +29,19 @@ body {
 
   .btn-large {
     width: 100%;
-  }
+  };
+
+}
+
+#modal-success {
+
+  .label {
+    -webkit-touch-callout: text !important; /* iOS Safari */
+    -webkit-user-select: text !important;   /* Chrome/Safari/Opera */
+    -khtml-user-select: text !important;    /* Konqueror */
+    -moz-user-select: text !important;      /* Firefox */
+    -ms-user-select: text !important;       /* Internet Explorer/Edge */
+    user-select: text !important;           /* Non-prefixed version, currently */
+  };
+  
 }

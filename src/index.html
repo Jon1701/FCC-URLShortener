@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <!-- MaterializeCSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="frameworks/jquery/jquery.js"></script>
     <link rel="stylesheet" href="frameworks/materialize-css/css/materialize.css"/>
     <script type="text/javascript" src="frameworks/materialize-css/js/materialize.js"></script>
@@ -53,7 +54,7 @@
             <!-- Input for URL  -->
             <div class="row">
               <div class="input-field col s12">
-                <input placeholder="https://www.google.com" id="input-url" type="text">
+                <input placeholder="https://www.google.com" id="input-url" type="text" value="https://www.google.com">
                 <label for="input-url">Enter a URL to shorten:</label>
               </div>
             </div>
@@ -62,14 +63,10 @@
             <div class="row">
 
               <!-- Submit button -->
-              <div class="col s6">
+              <div class="col s12">
                 <button id="btn-submit" type="submit" class="waves-effect waves-light btn-large">Shorten Link</button>
               </div>
 
-              <!-- Reset Button -->
-              <div class="col s6">
-                <button id="btn-reset" type="reset" class="waves-effect waves-light btn-large">Reset</button>
-              </div>
             </div>
 
           </form>
@@ -79,6 +76,38 @@
       </div>
 
     </div>
+
+    <!-- Invalid URL modal -->
+    <div id="modal-error" class="modal">
+      <div class="modal-content">
+        <h4>Error</h4>
+        <p class="message"></p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
+    <!-- Success modal -->
+    <div id="modal-success" class="modal">
+      <div class="modal-content">
+        <h4>Your short URL</h4>
+        <p class="text-center message">
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Short URL" id="field_short_url" type="text">
+              <label for="field_short_url">Here you go:</label>
+            </div>
+          </div>
+
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
 
   </body>
 
