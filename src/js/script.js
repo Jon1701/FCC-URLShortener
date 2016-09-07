@@ -1,5 +1,15 @@
 $(document).ready(function() {
 
+  // Select input box contents on click.
+  $('#field_short_url').on('focus', function(e) {
+
+    // Prevent default action.
+    e.preventDefault;
+
+    $(this).select();
+
+  });
+
   // URL Form submission.
   $('#form').on('submit', function(e) {
 
@@ -13,17 +23,35 @@ $(document).ready(function() {
     // at the /new endpoint.
     var jqxhr = $.getJSON('/new/' + url);
 
-    jqxhr.done(function() {
-      console.log(jqxhr);
-    })
+    // Once the request is done, parse the response.
+    jqxhr.done(function(response) {
 
-    jqxhr.always(function() {
-      console.log('always')
-    })
+      // Check to see if the response from the server returned some kind of
+      // error.
+      if (response.hasOwnProperty('error')) {
 
+        // If an error occured, display an error message to the user.
+        var msg = response['error']['msg'];
 
-    jqxhr.fail(function(e) {
-      console.log(e)
+        // Send error message to modal.
+        $('#modal-error .message').text(msg);
+
+        // Open the modal dialog.
+        $('#modal-error').openModal();
+
+      } else {
+
+        // Obtain the short URL.
+        var shortUrl = response['short_url'];
+
+        // Send short URL to modal.
+        $('#modal-success #field_short_url').val(shortUrl);
+
+        // Open the modal dialog.
+        $('#modal-success').openModal();
+
+      }
+
     });
 
   });
