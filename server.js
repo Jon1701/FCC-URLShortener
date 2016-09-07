@@ -17,8 +17,8 @@ var MONGO = {
   database: 'ms-urlshortener',
   collection: 'urls',
   credentials: {
-    username: 'app_ms_urlshortener',
-    password: process.env['app_ms_urlshortener']
+    username: 'APP_MS_URLSHORTENER',
+    password: process.env['APP_MS_URLSHORTENER']
   }
 };
 
@@ -121,21 +121,25 @@ var connectAndCreateShortUrl = function(req, res, originalUrl) {
 
 };
 
-// Serve static files from the ./dist folder.
-app.use(express.static('dist'));
-
-// Root folder. Serve index.html.
-app.get('/', function(req, res) {
-  res.render(__dirname + '/dist/index.html');
-});
-
+////////////////////////////////////////////////////////////////////////////////
+//
+//
 // Get hostname.
+//
+//
+////////////////////////////////////////////////////////////////////////////////
 app.get('/hostname', function(req, res) {
   res.json(req.hostname);
 });
 
+////////////////////////////////////////////////////////////////////////////////
+//
+//
 // Route to create new short URLs.
-app.post('/new/*', function (req, res) {
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+app.get('/new/*', function (req, res) {
 
   // Get the parameter in the route.
   var url = req.params[0];
@@ -155,7 +159,27 @@ app.post('/new/*', function (req, res) {
 
 });
 
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// Serve static files from the ./dist folder.
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+app.use(express.static('dist'));
+
+// Root folder. Serve index.html.
+app.get('/', function(req, res) {
+  res.render(__dirname + '/dist/index.html');
+});
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
 // Handle short URL lookup and redirect.
+//
+//
+////////////////////////////////////////////////////////////////////////////////
 app.get('/*', function(req, res) {
 
   // Callback to handle document search.
@@ -247,14 +271,8 @@ app.get('/*', function(req, res) {
 
   } else {
 
-    if (path == 'hostname') {
-      res.redirect('/hostname');
-    } else {
-
-      res.redirect('/new/*')
-      // Invalid short URL, return error message.
-      res.json(generateError('Invalid Short URL.'));
-    };
+    // Invalid short URL, return error message.
+    res.json(generateError('Invalid Short URL.'));
 
   };
 
