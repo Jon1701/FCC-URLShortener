@@ -30,11 +30,6 @@ MONGO['connString'] = 'mongodb://'
                     + ':' + MONGO.port
                     + '/' + MONGO.database;
 
-// Application options.
-var OPTIONS = {
-  shortcodeLength: 7
-};
-
 // Function to generate JSON to hold error message.
 var generateError = function(str) {
   return {
@@ -84,7 +79,7 @@ var connectAndCreateShortUrl = function(req, res, originalUrl) {
 
       // Generate a document containing the short url and the original url.
       var document = {
-        'short_url': hostname + '/' + randomstring.generate(OPTIONS.shortcodeLength),
+        'short_url': hostname + '/' + randomstring.generate(7),
         'original_url': originalUrl
       };
 
