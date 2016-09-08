@@ -1,11 +1,53 @@
 $(document).ready(function() {
 
+  // Get the hostname of the request, the API usage URL, and example usage
+  // and display it under the API USAGE tab.
+  var jqxhrGetHostname = $.getJSON('/hostname');
+  jqxhrGetHostname.success(function(response) {
+
+    // Get the hostname of the request.
+    var hostname = response;
+
+    // API usage URl
+    var apiUsageUrl = response + '/new/<URL to be shortened>';
+
+    // Display API Usage URL in the input box.
+    var $apiUrl = $('#input-apiurl');
+    $apiUrl.val(apiUsageUrl);
+    $apiUrl.attr('placeholder', apiUsageUrl);
+
+    // Highlight text on focus.
+    $apiUrl.on('focus', function(e) {
+      $(this).select();
+    });
+
+    // Display an example for using the API endpoint.
+    var exampleUrl = '/new/https://www.google.com';
+    var jqxhrExample = $.getJSON(exampleUrl);
+    jqxhrExample.success(function(response) {
+
+      // Display Example API URL.
+      $('#example-apiurl').text(hostname + exampleUrl);
+
+      // Dislpay Example API Response.
+      $('#example-apiresponse').text(JSON.stringify(response, null, 2));
+
+      // Unhide Example.
+      if (!response.hasOwnProperty('error')) {
+        $('#container-example').removeClass('hidden');
+      }
+
+    });
+
+  });
+
   // Select input box contents on click.
   $('#field_short_url').on('focus', function(e) {
 
     // Prevent default action.
     e.preventDefault;
 
+    // Select all contents.
     $(this).select();
 
   });
@@ -34,7 +76,6 @@ $(document).ready(function() {
       $('#modal-error').openModal();
 
     } else {
-
 
       // Make an ajax request to the server
       // at the /new endpoint.
@@ -77,6 +118,5 @@ $(document).ready(function() {
     }; // End URL length check.
 
   }); // End URL form submission.
-
 
 });

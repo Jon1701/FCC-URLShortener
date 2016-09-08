@@ -25,7 +25,6 @@ body {
 }
 
 #usage-web {
-  padding: 50px 0 50px 0;
 
   .btn-large {
     width: 100%;
@@ -43,5 +42,9 @@ body {
     -ms-user-select: text !important;       /* Internet Explorer/Edge */
     user-select: text !important;           /* Non-prefixed version, currently */
   };
-  
+
+}
+
+#example-apiurl, #example-apiresponse {
+  padding: 25px;
 }
