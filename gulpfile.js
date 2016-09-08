@@ -17,7 +17,7 @@ gulp.task('html', function() {
 
 // Move JavaScript files.
 gulp.task('javascript', function() {
-  gulp.src(srcPath + 'js/*.js')
+  gulp.src(srcPath + 'js/**/*.js')
     .pipe(gulp.dest(destPath + 'js/'));
 });
 
